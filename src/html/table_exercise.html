@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Table Exercise </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Send your job application </div>
+        <form action="table_exercise" method="get">
+        <table border="1x">
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" value="Eugene" name="firstname"/></td>
+                <td  rowspan="8"><table><thead>Enter job position here:</thead><tr><td><textarea  name="textarea" rows='11' cols='40' style="background-color: lightgoldenrodyellow">I'm looking for position of a Java developer !! </textarea></td></tr></table></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" value="Dubois" name="lastname"/></td>
+                
+            </tr>
+            <tr>
+                <td rowspan="2">Citizenship</td>
+                <td rowspan="2"><select size="2" name="citizenship"><option>USA</option><option>Canada</option></select></td>
+                
+            </tr>
+            <tr>
+            </tr>
+             <tr>
+                <td>Language of  correspondence: </td>
+                <td><input  value="French" type="radio" name="language1">French<input  value="English" type="radio" name="language2" checked>English <input  value="French" type="radio" name="language3">Spanish</td>
+                
+            </tr>
+            <tr>
+                <td colspan="2"> <input type="checkbox" multiple id="kk" name="kox1" value="kox" checked>Knowloedge of XML<input type="checkbox" multiple id="kk" name="kox" value="kox" checked>Knowloedge of HTML/CSS</td>
+                
+            </tr>
+            <tr>
+                <td colspan="2"><input type="checkbox" multiple id="kk" name="kox2" value="kox" checked>Strong knowledge of Java</td>             
+            </tr>
+             <tr>
+                <td>Your Password</td>
+                <td><input type="password" value="pas" name="password"></td>
+             
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align:right;"><input type="submit"  name="submit" value="send"></td>
+            
+            </tr>
+        </table>
+       </form>
+    </body>
+</html>

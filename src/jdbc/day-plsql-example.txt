@@ -1,0 +1,302 @@
+CREATE TABLE books
+(
+name VARCHAR(30) PRIMARY KEY,
+authors varchar(30) NOT NULL,
+edition INT ,
+pubDate DATE ,
+price int NOT NULL ,
+publisher VARCHAR(20),
+pages int NOT NULL,
+ISBN int UNIQUE
+);
+
+In this table columns marked with NOT NULL must contain some values, ISBN must be unique in each row.
+To fill this table write in SQL commander the following SQL instructions
+
+insert into books (name, authors , edition, pubDate, price, publisher, pages, isbn) values
+('Java 8', 'Schield H.', 2, '02-feb-2016', 450, 'Pearson', 450, 123);
+
+insert into books (name, authors , edition, pubDate, price, publisher, pages, isbn) values
+('Math for students', 'Smith J.', 1, '19-jan-2014', 450, 'ThomsonReuters', 450, 127845 );
+
+insert into books (name, authors , edition, pubDate, price, publisher, pages, isbn) values
+('HTML 5', 'Phillips A.', 1, '10-may-2013', 120, 'RELX Group', 712, 77789 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Rogue Lawyer', 'Grisham', 1, '04-may-2010', 854, 'Grupo Planeta', 712, 77559 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Scandalous Behavior', 'Stuart Woods', 1, '07-sep-2010', 854, 'Informa', 712, 514789 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('The Girl on the Train', 'Paula Hawkins', 1, '04-apr-2011', 127, 'RELX Group', 311, 95436);
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Blue', 'Danielle Steel', 1, '30-oct-2009', 57, 'Egmont Group', 88, 1456387 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('NYPD Red4', 'James Patterson & Karp', 2, '04-aug-2010', 276, 'Penguin Random House', 98, 3549133);
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Brotherhood In Death', 'J. D. Robb', 1, '04-jun-2010', 245, 'Hachette Livre', 612, 44712489 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Morning Star', 'Pierce Brown', 3, '04-jul-2014', 59, 'Scholastic', 118, 71237749 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Cometh the hour', 'Jeffrey Archer', 2, '04-dec-2011', 154, 'Wiley', 278, 77627789 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Me Before You', 'Jojo Moyes', 1, '04-may-2013', 300, 'Oxford University', 395, 754989 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Fire Touched', 'Patricia Briggs', 2, '04-apr-2005', 74, 'Holtzbrinck', 169, 72389 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Fool me once', 'Harlan Coben', 3, '04-jun-2010', 201, 'Penguin Random House', 315, 771169 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('The Gangster', 'Clive Cussler', 1, '04-dec-2012', 621, 'Scholastic', 712, 756189 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Private Paris', 'James Patters & Mark Sullivan', 1, '04-apr-2012', 152, 'Grupo Planeta', 328, 731889 );
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('C# 5', 'Thomson B', 3, '04-jun-2010', 208, 'Penguin House', 378, 25541);
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('XML 2.0', 'Trump Donald', 1, '04-feb-2017', 288, 'Scholastic', 485, 222541);
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('JavaScript', 'Boon Samuel', 5, '24-jul-2016', 201, 'Penguin House', 391, 23591);
+
+insert into books (name, authors, edition, pubDate, price, publisher, pages, isbn) values
+('Functional programming', 'Good G.', 2, '04-mar-2015', 511, 'Oxford University', 378, 2951);
+
+
+
+
+select hr.max2(2,-3) from dual;
+
+----/
+--create or replace function square(a in int)
+--return int as
+--begin 
+--  return a * a;
+--end;
+--/
+--select square(5) from dual;
+--create or replace function allprices
+--return int as 
+--ress int; 
+--begin 
+--select sum(price) into ress from books;
+--return ress;
+--end;
+--/
+--select allprices() from dual;
+
+--create or replace function avg(a in int ,  b in int)
+--return  float 
+--as 
+--begin 
+--  return(a+b)/2;
+--end;
+--/
+-- select hr.avg(5,6) from dual; 
+
+--/
+
+--/
+create or replace function max2(a in int, b in int)
+return int as 
+begin
+if a > b then
+  return a;
+else 
+  return b;
+end if;
+end;
+/
+
+select max2(2,-3) from dual;
+
+
+--/
+create or replace function max3(a int, b int, c int)
+return int as
+begin 
+   return max2(max2(a,b),c);
+end;
+/ 
+
+select max2(2,-3), max3(1,12,-4) from dual; 
+
+--/
+create or replace function max4(a int , b int , c int , d int )
+ return int as 
+begin 
+   return max2(max2(a,b),max2(c,d));
+end;
+  
+select max4(1,4,7,-2) from dual;
+
+  --/
+create or replace function isLeap(y in int)
+return varchar
+as
+begin 
+   if y mod 400 = 0 then
+     return 'yes';
+   else begin
+       if y mod 100 =0 then 
+           return 'no';
+        else begin
+            if y mod 4 = 0 then
+              return 'yes';
+            else 
+                return  'no';
+            end if;
+       end;
+      end if;
+     end;
+   end if;
+ end;                 
+/
+
+--/
+select isleap(1900),isleap(2000),isLeap(2004) from dual;
+
+-- select lname, birthdt , isleap(extract(year from birthdt) )  from t_stud ;
+   
+   
+   --/
+create or replace function intvalue(tax in float,vname in varchar)
+return int 
+   getname varchar(20);
+   price_book float;
+as
+begin 
+  select price into price_book from books where name=vname;
+  return   price_book*tax
+end;        
+/
+
+
+--/
+create or replace function tax(tax in float,v in int,prec in int)
+return float 
+as
+begin   
+  return   round(v*tax,prec);
+end;        
+/
+
+--select price , tax(price,0.15,2) from books;
+--/
+create or replace function avgofstud(stid in int)
+return float 
+as
+rslt float;
+begin
+  select avg(grade) into rslt from t_grade g where g.sid=stid;
+  return rslt;
+end;
+/  
+
+select fname, lname , round(avgofstud(sid),2) from t_stud;
+
+======================================loop============
+
+--/
+create or replace function rangeSum(beg in int ,  fin in int)
+return int
+as
+i int :=0;
+res int :=0;
+begin 
+  for i in beg..fin loop 
+     res := res+i;
+  end loop;
+   return res;
+end;
+/  
+
+
+--/
+create or replace function greatestprime(beg in int , fin in int)
+return int 
+as
+i int :=0;
+j int :=0;
+isprime boolean :=true;
+begin
+   for i in reverse beg..fin loop 
+    isprime := true;
+    for j in 2..i/2 loop 
+      if i mod j=0 then  begin 
+         isprime := false;
+         exit;
+      end;
+      end if;
+   end loop;
+   
+   if isprime = true then 
+     return i ; 
+   end if;
+   end loop; 
+   return 0 ;
+end;
+/   
+ select greatestprime(1,800) from dual; 
+
+
+
+ --/
+create or replace function geomproelems(beg in int,coeff in int, amount in int)
+return int 
+as
+ elesum int ; 
+ curelem int;
+ counter int :=1;
+ begin
+  curelem :=beg;
+  elesum :=curelem;
+  loop
+    if elesum >=amount then
+        exit;
+    end if ; 
+    counter := counter +1;
+    curelem :=curelem*coeff;
+    elesum := elesum + curelem;
+   end loop;
+  return counter; 
+end;
+/     
+
+select geomproelems(1,2, 10) from dual ;  
+
+   --/
+create or replace function re_geomproelems(beg in int,coeff in int, amount in int)
+return int 
+as
+ elesum int ; 
+ curelem int;
+ counter int :=1;
+ begin
+  curelem :=beg;
+  elesum :=curelem;
+  while (elesum < amount) LOOP
+    counter := counter +1;
+    curelem :=curelem*coeff;
+    elesum := elesum + curelem;
+   end loop;
+  return counter; 
+end;
+/     
+
+select re_geomproelems(1,2, 20) from dual ;    
+
+  
+ 
+ 
